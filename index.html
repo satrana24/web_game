@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>SYSTEM ERROR: REALITY NOT FOUND</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <!-- МЕНЮ -->
+    <section id="screen-menu" class="screen active">
+      <div class="menu-inner">
+        <h1 class="game-title">SYSTEM ERROR:<br><span>REALITY NOT FOUND</span></h1>
+        <p class="menu-sub">изометрическая история о багах, которых не должно быть</p>
+        <div class="menu-buttons">
+          <button id="btn-start" class="btn">НАЧАТЬ</button>
+          <button id="btn-continue" class="btn" disabled>ПРОДОЛЖИТЬ</button>
+        </div>
+        <p class="menu-hint">WASD / стрелки — движение · E — взаимодействие · Space — уворот</p>
+      </div>
+    </section>
+
+    <!-- КАТ-СЦЕНА -->
+    <section id="screen-cutscene" class="screen">
+      <div class="cutscene-inner">
+        <p id="cutscene-text" class="cutscene-text"></p>
+        <button id="btn-cutscene-next" class="btn btn-small hidden">ДАЛЬШЕ ▸</button>
+        <p class="cutscene-skip">Esc — пропустить</p>
+      </div>
+    </section>
+
+    <!-- ИГРА -->
+    <section id="screen-game" class="screen">
+      <canvas id="game-canvas"></canvas>
+
+      <!-- HUD -->
+      <div id="hud">
+        <div id="hud-bugs">БАГИ: <span id="bug-count">0</span>/3</div>
+        <div id="hud-time">ВРЕМЯ: <span id="time-val">0:00</span></div>
+        <div id="hud-record">РЕКОРД: <span id="record-val">—</span></div>
+            <div id="hud-quest">ЗАДАНИЕ: <span id="quest-val">найди баги (0/3)</span></div>  
+    </div>
+
+      <!-- Подсказка взаимодействия -->
+      <div id="interact-hint" class="hidden">
+        <span class="key">E</span> <span id="interact-label">взаимодействовать</span>
+      </div>
+
+      <!-- Кнопки управления -->
+      <div id="controls">
+        <button id="btn-pause" class="btn btn-small">ПАУЗА</button>
+        <button id="btn-restart" class="btn btn-small">ЗАНОВО</button>
+      </div>
+
+      <!-- Экранные кнопки (мобилки) -->
+      <div id="touch-controls" class="hidden">
+        <div class="dpad">
+          <button class="tbtn" data-dir="up">▲</button>
+          <button class="tbtn" data-dir="left">◀</button>
+          <button class="tbtn" data-dir="down">▼</button>
+          <button class="tbtn" data-dir="right">▶</button>
+        </div>
+        <div class="action-buttons">
+          <button class="tbtn" id="touch-e">E</button>
+          <button class="tbtn" id="touch-space">⤢</button>
+        </div>
+      </div>
+
+      <!-- Оверлей паузы -->
+      <div id="pause-overlay" class="hidden">
+        <div class="overlay-box">
+          <h2>ПАУЗА</h2>
+          <button id="btn-resume" class="btn">ПРОДОЛЖИТЬ</button>
+          <button id="btn-pause-restart" class="btn">ЗАНОВО</button>
+                  <button id="btn-pause-menu" class="btn">В МЕНЮ</button>
+        </div>
+      </div>
+
+      <!-- Оверлей финала -->
+      <div id="end-overlay" class="hidden">
+        <div class="overlay-box">
+          <h2 id="end-title">КОНЕЦ</h2>
+          <p id="end-desc"></p>
+          <button id="btn-end-restart" class="btn">ЗАНОВО</button>
+                  <button id="btn-end-menu" class="btn">В МЕНЮ</button>
+        </div>
+      </div>
+
+      <!-- Индикатор помех (глитч) -->
+      <div id="glitch-indicator" class="hidden">
+        ПОМЕХИ: <span id="glitch-count">0</span>/3
+      </div>
+
+            <!-- VN-диалог (реплика Алекса при взаимодействии) -->
+            <!-- VN-диалог -->
+      <div id="vn-dialog" class="hidden">
+        <div class="vn-box">
+          <div class="vn-name" id="vn-name">АЛЕКС</div>
+          <div id="vn-text" class="vn-text"></div>
+          <div id="vn-choices" class="vn-choices hidden">
+            <button id="vn-yes" class="btn">ДА</button>
+            <button id="vn-no" class="btn">НЕТ</button>
+          </div>
+          <div id="vn-hint" class="vn-hint">клик / E — закрыть</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
